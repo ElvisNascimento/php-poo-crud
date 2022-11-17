@@ -1,2 +1,12 @@
-<h1>Pagina de Editar</h1>
+<h1 class="d-flex jusstfy-content-center">Pagina de Editar</h1>
 <hr>
+<form class="form-control d-grid gap-2 col-3 mx-auto " action="#" method="POST">
+    <input  class="form-control col-3"type="hidden" name="idalunos" value="<?php echo $aluno["idalunos"]?>">
+    <label for="matricula">Matricula</label>
+    <input class="form-control col-3"type="text" name="matricula" value="<?php echo $aluno["matricula"]?>">
+    <label for="nome">nome</label>
+    <input class="form-control"type="text" name="nome"value="<?php echo $aluno["nome"]?>">
+    <label for="cidade">cidade</label>
+    <input class="form-control"type="text" name="cidade"value="<?php echo $aluno["cidade"]?>">
+    <button class="btn btn-warning" type="submit" value="editar">Editar</button>
+</form>
