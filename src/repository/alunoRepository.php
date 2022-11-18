@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 function buscarAlunos(): iterable
 {
-    $sql = 'SELECT * FROM alunos';
+    $sql = 'SELECT * FROM alunos ORDER BY matricula ASC';
     $alunos = abrirConexao()->query($sql);
     return $alunos;
 }
@@ -14,34 +14,19 @@ function buscarUmAlunos($idalunos): iterable
     $aluno = abrirConexao()->query($sql);
     return $aluno->fetch(PDO::FETCH_ASSOC);
 }
-function novoAluno(): void
+function novoAluno(string $matricula, string $nome, string $cidade): void
 {
     //INSERT INTO
-    if (false === empty($_POST)) {
-        $matricula = $_POST['matricula'];
-        $nome = $_POST['nome'];
-        $cidade = $_POST['cidade'];
-
-        $select = "INSERT INTO `alunos` (`matricula`, `nome`, `cidade`)  VALUES (?,?,?)";
-        $query = abrirConexao()->prepare($select);
-        $query->execute([$matricula, $nome, $cidade]);
-        header('location: /listar');
-    }
+    $select = "INSERT INTO `alunos` (`matricula`, `nome`, `cidade`)  VALUES (?,?,?)";
+    $query = abrirConexao()->prepare($select);
+    $query->execute([$matricula, $nome, $cidade]);
 }
-function atualizarAluno():void
+function atualizarAluno(string $matricula, string $nome, string $cidade,string $idalunos): void
 {
-    if (false === empty($_POST)) {
-        $idalunos = $_POST['idalunos'];
-        $matricula = $_POST['matricula'];
-        $nome = $_POST['nome'];
-        $cidade = $_POST['cidade'];
-
-        $sql = "UPDATE alunos SET nome=?,matricula=?,cidade=? WHERE idalunos=?";
-        $query = abrirConexao()->prepare($sql);
-        $query->execute([$nome,$matricula, $cidade,$idalunos]);
-        header('location: /listar');
-    }
-
+    $sql = "UPDATE alunos SET nome=?,matricula=?,cidade=? WHERE idalunos=?";
+    $query = abrirConexao()->prepare($sql);
+    $query->execute([$nome, $matricula, $cidade, $idalunos]);
+    header('location: /listar');
 }
 function excluirAluno(string $idalunos): void
 {

@@ -1,12 +1,16 @@
-<h1 class="d-flex jusstfy-content-center">Pagina de Editar</h1>
+<h1 class="text-center">Editar Aluno</h1>
 <hr>
-<form class="form-control d-grid gap-2 col-3 mx-auto " action="#" method="POST">
-    <input  class="form-control col-3"type="hidden" name="idalunos" value="<?php echo $aluno["idalunos"]?>">
-    <label for="matricula">Matricula</label>
-    <input class="form-control col-3"type="text" name="matricula" value="<?php echo $aluno["matricula"]?>">
-    <label for="nome">nome</label>
-    <input class="form-control"type="text" name="nome"value="<?php echo $aluno["nome"]?>">
-    <label for="cidade">cidade</label>
-    <input class="form-control"type="text" name="cidade"value="<?php echo $aluno["cidade"]?>">
-    <button class="btn btn-warning" type="submit" value="editar">Editar</button>
-</form>
+<div class="container col-4">
+    <form class="form-control d-grid gap-2 col-3 mx-auto " action="#" method="POST">
+        <input class="form-control col-3" type="hidden" name="idalunos"
+            value="<?php echo $_POST["idalunos"] ?? $dados["idalunos"] ?>">
+        <label for="matricula">Matricula</label>
+        <input class="form-control col-3" type="text" name="matricula"
+            value="<?php echo $_POST["matricula"] ?? $dados["matricula"] ?>">
+        <label for="nome">nome</label>
+        <input class="form-control" type="text" name="nome" value="<?php echo $_POST["nome"] ?? $dados["nome"] ?>">
+        <label for="cidade">cidade</label>
+        <input class="form-control" type="text" name="cidade" value="<?php echo $_POST["cidade"] ?? $dados["cidade"] ?>">
+        <button class="btn btn-warning" type="submit" value="editar">Editar</button>
+    </form>
+</div>
